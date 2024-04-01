@@ -2,31 +2,24 @@ package Strings;
 
 public class Pangram {
     public static void main(String[] args) {
-        String inputString = "The quick brown fox jumps over the lazy dog";
-
-        inputString = inputString.toLowerCase();
-
-        boolean[] isPresent = new boolean[26];
-
-        for (int i = 0; i < inputString.length(); i++) {
-            char ch = inputString.charAt(i);
-            if ('a' <= ch && ch <= 'z') {
-                isPresent[ch - 'a'] = true;
+          final int alphabet = 26;
+        Set<Character> set = new HashSet<>();
+       String st = "abcdefghijklmnopqrstuvwxyz";
+        for (int i = 0; i < st.length(); i++) {
+            char ch = st.charAt(i);
+            if(ch>='a' && ch<='z'){
+                set.add(ch);
             }
-        }
-
-        boolean isPangram = true;
-        for (boolean present : isPresent) {
-            if (!present) {
-                isPangram = false;
-                break;
+            if(ch>='A' && ch<='Z'){
+                ch = Character.toLowerCase(ch);
+                set.add(ch);
             }
+            
         }
-
-        if (isPangram) {
-            System.out.println("The string is a pangram.");
-        } else {
-            System.out.println("The string is not a pangram.");
+        if(set.size()==alphabet){
+            System.out.println("its a panagram string");
+        }else{
+            System.out.println("Its not panagram string");
         }
     }
 }
